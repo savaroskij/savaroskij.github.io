@@ -17,6 +17,13 @@
     max-width:100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
 }
+.inner {
+  display:inline-block;
+}
+
+button {
+  float: left;
+}
 </style>
 </head>
 
@@ -27,12 +34,20 @@
 
 <img src="image/santa.gif" alt="Dancing Santa" class="responsive">
 
+<div>
+  <div class=inner><p>Clicca su questo bottone per generare i tuoi auguri: </p></div>
+  <div class=inner><button type="button" onclick="random_greet()">Bottone</button></div>
+</div>
+
+<p id="greet"><br></p>
+
 <p style="text-align:center;"> Copyright &copy;
     <script>document.write(new Date().getFullYear())</script>
     Matteo Savatteri All Rights Reserved
 </p>
 
 <script src="script/blink.js"></script>
+<script src="script/random_greet.js"></script>
 
 </body>
 </html>
