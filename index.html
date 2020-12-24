@@ -4,13 +4,28 @@
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+.responsive {
+  max-width:50%; /* The width is 50%, by default */
+  height:auto;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
+  .responsive {
+    max-width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+</style>
 </head>
+
 <body>
 
-<h1 id="h1" style="color:green">E' Natale!</h1>
+<h1 id="h1" style="color:green;">E' Natale!</h1>
 <p>Ecco la pagina di auguri personale di Matteo Savatteri.</p>
 
-<img src="image/santa.gif" alt="Dancing Santa">
+<img src="image/santa.gif" alt="Dancing Santa" class="responsive">
 
 <script src="script/blink.js"></script>
 
