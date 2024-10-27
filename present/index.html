@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Open the Present</title>
+    <style>
+	/* Ensure body takes up the full height of the viewport */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+	    flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* Pushes footer to the bottom */
+        }
+        .present {
+            width: 400px;
+            height: 400px;
+            background-image: url('present.gif'); /* Placeholder for present image */
+            background-size: cover;
+            border: 5px solid #ff69b4;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .present:hover {
+            transform: scale(1.05);
+        }
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #32cd32;
+        }
+	/* Footer styling */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 1em;
+            color: #555;
+        }
+	/* stile fiocchi neve */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #ffffff;
+            font-size: 1em;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+            opacity: 0.1;
+        }
+        /* animazione fiocchi neve */
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="present" id="present" onclick="openPresent()"></div>
+        <div class="message" id="message">Friendship is the true present.</div>
+    </div>
+
+    <footer>
+        By Matteo Savatteri, 2024-10-22
+    </footer>
+
+    <script>
+        function openPresent() {
+            const password = prompt("Poglia, enter the password to open the present:");
+            const correctPassword = "pazzesco"; // Set your desired password here
+            
+            if (password === correctPassword) {
+                document.getElementById("present").style.backgroundImage = "url('poglia_n_me.jpg')";
+                document.getElementById("message").style.display = "block";
+                document.getElementById("present").onclick = null;
+
+                startSnowfall();
+            } else {
+                alert("Incorrect password😢 Try again!");
+            }
+        }
+	
+        function startSnowfall() {
+            // Use setInterval to continuously create snowflakes
+            setInterval(createSnowflake, 200); // Adjust the interval for more or fewer snowflakes
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄️'; // Snowflake symbol
+            
+            // Random position for each snowflake
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${10 + Math.random() * 5}s`; // Random fall duration
+            snowflake.style.fontSize = `${0.8 + Math.random() * 1.2}em`; // Random size for each snowflake
+            
+            document.body.appendChild(snowflake);
+
+            // Remove snowflake once the animation ends
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }	
+
+    </script>
+</body>
+</html>
