@@ -66,6 +66,39 @@
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(100vh); opacity: 0; }
         }
+
+	/* Responsive Styles */
+        @media (max-width: 768px) {
+            .present {
+                width: 550px;
+                height: 550px;
+                border-width: 4px;
+            }
+            .message {
+                font-size: 1.2em;
+            }
+            footer {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .present {
+                width: 300px;
+                height: 300px;
+                border-width: 3px;
+            }
+            .message {
+                font-size: 1em;
+                margin-top: 15px;
+            }
+            footer {
+                font-size: 0.8em;
+                padding: 6px;
+            }
+        }
+    </style>
     </style>
 </head>
 <body>
